@@ -1,6 +1,5 @@
 import os
 import pygame
-import random
 
 class Game:
     def __init__ (self, state_dict, start_state):
