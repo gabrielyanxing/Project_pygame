@@ -52,8 +52,7 @@ class Info:
             surface.blit(label[0], label[1])
         surface.blit(self.flash_coin.image, self.flash_coin.rect)
 
-        socks_label = self.create_label(f': {player_sock_count}', size=25)
-        surface.blit(socks_label, (200, 55))  # 调整位置以适合你的设计
-
+        socks_label = self.create_label(f' x {player_sock_count}', size=25)
+        surface.blit(socks_label, (200, 55))
         if self.state == 'load_screen':
             surface.blit(self.player_image, (330, 270))

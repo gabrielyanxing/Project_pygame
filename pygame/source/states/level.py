@@ -4,8 +4,7 @@ import pygame
 from .. import tools, setup
 from .. import constants as C
 from .. components import player
-from ..components.sock import Sock  # 导入 Sock 类
-from .. components import coin
+from ..components.sock import Sock
 
 class Level:
     def __init__(self):
@@ -14,8 +13,8 @@ class Level:
         self.info = info.Info('level')
         self.setup_background()
         self.setup_player()
-        self.socks = pygame.sprite.Group()  # 创建一个装袜子的组
-        self.create_socks()  # 创建袜子
+        self.socks = pygame.sprite.Group()
+        self.create_socks()
 
 
     def setup_background(self):
@@ -29,7 +28,7 @@ class Level:
         self.game_ground = pygame.Surface((self.background_rect.width, self.background_rect.height))
 
     def create_socks(self):
-        sock1 = Sock(600, 280)  # 你可以根据需要设置袜子的坐标
+        sock1 = Sock(600, 280)
         sock2 = Sock(1000, 200)
         sock3 = Sock(1200, 300)
         sock4 = Sock(1400, 400)
@@ -63,10 +62,9 @@ class Level:
         self.update_player_position()
         self.update_game_window()
 
-        # 检测玩家与袜子的碰撞
         collected_socks = pygame.sprite.spritecollide(self.player, self.socks, True)
         if collected_socks:
-            self.player.sock_count += len(collected_socks)  # 更新袜子计数
+            self.player.sock_count += len(collected_socks)
 
         self.info.update()
         self.draw(surface)
@@ -92,5 +90,4 @@ class Level:
 
         surface.blit(self.game_ground, (0,0), self.game_window)
 
-        # 传递玩家的袜子计数
         self.info.draw(surface, self.player.sock_count)
